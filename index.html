@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hava Durumu Uygulaması</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Background elements -->
+  <div class="sun"></div>
+  <div class="rain-container" id="rain-container"></div>
+  
+  <!-- Enhanced cloud animations -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+  <div class="cloud cloud4"></div>
+  <div class="cloud cloud5"></div>
+
+  <div class="container">
+    <h1>Hava Durumu</h1>
+    
+    <div class="search-box">
+      <input type="text" placeholder="Şehir ismi girin..." id="city-input" />
+      <button id="search-btn">Sorgula</button>
+    </div>
+    
+    <div id="loading" class="loading-spinner"></div>
+    
+    <div class="error-message" id="error-message">
+      Şehir bulunamadı. Lütfen tekrar deneyin.
+    </div>
+    
+    <div class="weather-info" id="weather-info">
+      <div class="city-name" id="city-name">New York, ABD</div>
+      <div class="weather-icon">
+        <img src="/api/placeholder/100/100" alt="Hava Durumu İkonu" id="weather-icon" />
+      </div>
+      <div class="temperature"><span id="temperature">22</span>°C</div>
+      <div class="description" id="description">Açık hava</div>
+      
+      <div class="details">
+        <div class="detail-item">
+          <p><i class="fas fa-tint"></i> Nem</p>
+          <p><span id="humidity">60</span>%</p>
+        </div>
+        <div class="detail-item">
+          <p><i class="fas fa-wind"></i> Rüzgar</p>
+          <p><span id="wind-speed">5.2</span> km/s</p>
+        </div>
+        <div class="detail-item">
+          <p><i class="fas fa-thermometer-half"></i> Hissedilen</p>
+          <p><span id="feels-like">20</span>°C</p>
+        </div>
+        <div class="detail-item">
+          <p><i class="fas fa-compress-arrows-alt"></i> Basınç</p>
+          <p><span id="pressure">1015</span> hPa</p>
+        </div>
+        <div class="detail-item">
+          <p><i class="fas fa-sun"></i> Güneş Doğuşu</p>
+          <p><span id="sunrise">--:--</span></p>
+        </div>
+        <div class="detail-item">
+          <p><i class="fas fa-moon"></i> Güneş Batışı</p>
+          <p><span id="sunset">--:--</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
