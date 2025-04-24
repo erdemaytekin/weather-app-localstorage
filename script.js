@@ -122,7 +122,7 @@ function translateDescription(desc) {
     "mist": "Sisli",
     "haze": "Puslu",
     "fog": "Sisli",
-    "drizzle": "Çisenti"
+    "drizzle": "Çiseleyen Yağmur"
   };
   return dictionary[desc.toLowerCase()] || desc;
 }
