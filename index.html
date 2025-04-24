@@ -6,64 +6,63 @@
   <title>Hava Durumu Uygulaması</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- poppins yazı tipi -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /><!-- ikonları için ekledik (bulut-güneş-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /><!-- ikonlar için -->
 </head>
 <body>
 
-  <div class="sun"></div>
-  <div class="rain-container" id="rain-container"></div>
+  <div class="gunes"></div>
+  <div class="yagmur-kapsayici" id="rain-container"></div>
   
-  
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
-  <div class="cloud cloud3"></div>
-  <div class="cloud cloud4"></div>
-  <div class="cloud cloud5"></div>
+  <div class="bulut bulut1"></div>
+  <div class="bulut bulut2"></div>
+  <div class="bulut bulut3"></div>
+  <div class="bulut bulut4"></div>
+  <div class="bulut bulut5"></div>
 
-  <div class="container">
+  <div class="kapsayici">
     <h1>Hava Durumu</h1>
     
-    <div class="search-box">
+    <div class="arama-kutusu">
       <input type="text" placeholder="Şehir ismi girin..." id="city-input" />
       <button id="search-btn">Sorgula</button>
     </div>
     
-    <div id="loading" class="loading-spinner"></div>
+    <div id="loading" class="yukleme-animasyonu"></div>
     
-    <div class="error-message" id="error-message">
+    <div class="hata-mesaji" id="error-message">
       Şehir bulunamadı. Lütfen tekrar deneyin.
     </div>
     
-    <div class="weather-info" id="weather-info">
-      <div class="city-name" id="city-name">Ankara, TR</div>
-      <div class="weather-icon">
+    <div class="hava-bilgisi" id="weather-info">
+      <div class="sehir-adi" id="city-name">Ankara, TR</div>
+      <div class="hava-ikonu">
         <img src="/api/placeholder/100/100" alt="Hava Durumu İkonu" id="weather-icon" />
       </div>
-      <div class="temperature"><span id="temperature">22</span>°C</div>
-      <div class="description" id="description">Açık hava</div>
+      <div class="sicaklik"><span id="temperature">22</span>°C</div>
+      <div class="aciklama" id="description">Açık hava</div>
       
-      <div class="details">
-        <div class="detail-item">
+      <div class="detaylar">
+        <div class="detay-ogesi">
           <p><i class="fas fa-tint"></i> Nem</p>
           <p><span id="humidity">60</span>%</p>
         </div>
-        <div class="detail-item">
+        <div class="detay-ogesi">
           <p><i class="fas fa-wind"></i> Rüzgar</p>
           <p><span id="wind-speed">5.2</span> km/s</p>
         </div>
-        <div class="detail-item">
+        <div class="detay-ogesi">
           <p><i class="fas fa-thermometer-half"></i> Hissedilen</p>
           <p><span id="feels-like">20</span>°C</p>
         </div>
-        <div class="detail-item">
+        <div class="detay-ogesi">
           <p><i class="fas fa-compress-arrows-alt"></i> Basınç</p>
           <p><span id="pressure">1015</span> hPa</p>
         </div>
-        <div class="detail-item">
+        <div class="detay-ogesi">
           <p><i class="fas fa-sun"></i> Güneş Doğuşu</p>
           <p><span id="sunrise">--:--</span></p>
         </div>
-        <div class="detail-item">
+        <div class="detay-ogesi">
           <p><i class="fas fa-moon"></i> Güneş Batışı</p>
           <p><span id="sunset">--:--</span></p>
         </div>
