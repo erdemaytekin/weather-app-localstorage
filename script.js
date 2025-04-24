@@ -1,4 +1,4 @@
-const apiKey = "fc11c37bf3de43644f9f6b23ecda8f68";
+const apiKey = "fc11c37bf3de43644f9f6b23ecda8f68";  // Bu API anahtarını OpenWeatherMap’ten aldık.
 
 const cityInput = document.getElementById('city-input');
 const searchBtn = document.getElementById('search-btn');
