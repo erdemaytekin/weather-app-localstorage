@@ -11,8 +11,8 @@
 <body>
 
   <div class="sun"></div>
+  <div class="moon"></div>
   <div class="rain-container" id="rain-container"></div>
-  
   
   <div class="cloud cloud1"></div>
   <div class="cloud cloud2"></div>
@@ -25,7 +25,25 @@
     
     <div class="search-box">
       <input type="text" placeholder="Şehir ismi girin..." id="city-input" />
+      <button id="location-btn" title="Konumumu kullan"><i class="fas fa-map-marker-alt"></i></button>
       <button id="search-btn">Sorgula</button>
+    </div>
+    
+    <div class="unit-toggle-container">
+      <span>°C</span>
+      <label class="switch">
+        <input type="checkbox" id="unit-toggle">
+        <span class="slider round"></span>
+      </label>
+      <span>°F</span>
+    </div>
+    
+    <!-- Tab Menüsü -->
+    <div class="tab-menu">
+      <button class="tab-btn active" data-tab="current">Güncel Hava Durumu</button>
+      <button class="tab-btn" data-tab="forecast">5 Günlük Tahmin</button>
+      <button class="tab-btn" data-tab="chart">Sıcaklık Grafiği</button>
+      <button class="tab-btn" data-tab="favorites">Favorilerim</button>
     </div>
     
     <div id="loading" class="loading-spinner"></div>
@@ -34,42 +52,97 @@
       Şehir bulunamadı. Lütfen tekrar deneyin.
     </div>
     
-    <div class="weather-info" id="weather-info">
-      <div class="city-name" id="city-name">Ankara, TR</div>
-      <div class="weather-icon">
-        <img src="/api/placeholder/100/100" alt="Hava Durumu İkonu" id="weather-icon" />
+    <!-- Güncel Hava Durumu Sekmesi -->
+    <div class="tab-content active" id="current-tab">
+      <div class="weather-info" id="weather-info">
+        <div class="city-name-container">
+          <div class="city-name" id="city-name">Ankara, TR</div>
+          <button id="add-to-favorites" class="favorite-btn" title="Favorilere Ekle">
+            <i class="fas fa-heart"></i>
+          </button>
+        </div>
+        
+        <div class="weather-icon">
+          <img src="/api/placeholder/100/100" alt="Hava Durumu İkonu" id="weather-icon" />
+        </div>
+        <div class="temperature"><span id="temperature">22</span><span id="temp-unit">°C</span></div>
+        <div class="description" id="description">Açık hava</div>
+        <div class="local-time" id="local-time">Yerel Saat: --:--</div>
+        
+        <div class="details">
+          <div class="detail-item">
+            <p><i class="fas fa-tint"></i> Nem</p>
+            <p><span id="humidity">60</span>%</p>
+          </div>
+          <div class="detail-item">
+            <p><i class="fas fa-wind"></i> Rüzgar</p>
+            <p><span id="wind-speed">5.2</span> <span id="wind-unit">km/s</span></p>
+          </div>
+          <div class="detail-item">
+            <p><i class="fas fa-thermometer-half"></i> Hissedilen</p>
+            <p><span id="feels-like">20</span><span id="feels-like-unit">°C</span></p>
+          </div>
+          <div class="detail-item">
+            <p><i class="fas fa-compress-arrows-alt"></i> Basınç</p>
+            <p><span id="pressure">1015</span> hPa</p>
+          </div>
+          <div class="detail-item">
+            <p><i class="fas fa-sun"></i> Güneş Doğuşu</p>
+            <p><span id="sunrise">--:--</span></p>
+          </div>
+          <div class="detail-item">
+            <p><i class="fas fa-moon"></i> Güneş Batışı</p>
+            <p><span id="sunset">--:--</span></p>
+          </div>
+          <div class="detail-item">
+            <p><i class="fas fa-lungs"></i> Hava Kalitesi</p>
+            <p><span id="aqi">--</span> (<span id="aqi-level">--</span>)</p>
+          </div>
+        </div>
       </div>
-      <div class="temperature"><span id="temperature">22</span>°C</div>
-      <div class="description" id="description">Açık hava</div>
-      
-      <div class="details">
-        <div class="detail-item">
-          <p><i class="fas fa-tint"></i> Nem</p>
-          <p><span id="humidity">60</span>%</p>
+    </div>
+    
+    <!-- 5 Günlük Tahmin Sekmesi -->
+    <div class="tab-content" id="forecast-tab">
+      <div class="forecast-section">
+        <h2>5 Günlük Tahmin</h2>
+        <div class="forecast-container" id="forecast-container">
+          <!-- Tahmin verileri JavaScript ile eklenecek -->
         </div>
-        <div class="detail-item">
-          <p><i class="fas fa-wind"></i> Rüzgar</p>
-          <p><span id="wind-speed">5.2</span> km/s</p>
+        <div class="no-data-message" id="forecast-no-data">
+          Lütfen önce bir şehir arayın.
         </div>
-        <div class="detail-item">
-          <p><i class="fas fa-thermometer-half"></i> Hissedilen</p>
-          <p><span id="feels-like">20</span>°C</p>
+      </div>
+    </div>
+    
+    <!-- Sıcaklık Grafiği Sekmesi -->
+    <div class="tab-content" id="chart-tab">
+      <div class="chart-section">
+        <h2>24 Saatlik Sıcaklık Grafiği</h2>
+        <div class="temperature-chart" id="temperature-chart">
+          <canvas id="temp-chart"></canvas>
         </div>
-        <div class="detail-item">
-          <p><i class="fas fa-compress-arrows-alt"></i> Basınç</p>
-          <p><span id="pressure">1015</span> hPa</p>
+        <div class="no-data-message" id="chart-no-data">
+          Lütfen önce bir şehir arayın.
         </div>
-        <div class="detail-item">
-          <p><i class="fas fa-sun"></i> Güneş Doğuşu</p>
-          <p><span id="sunrise">--:--</span></p>
-        </div>
-        <div class="detail-item">
-          <p><i class="fas fa-moon"></i> Güneş Batışı</p>
-          <p><span id="sunset">--:--</span></p>
+      </div>
+    </div>
+    
+    <!-- Favoriler Sekmesi -->
+    <div class="tab-content" id="favorites-tab">
+      <div class="favorites-section">
+        <h2>Favori Şehirlerim</h2>
+        <div class="favorites-container" id="favorites-container">
+          <!-- Favori şehirler JavaScript ile eklenecek -->
         </div>
       </div>
     </div>
   </div>
+
+  <footer class="footer">
+    <p>Hava Durumu Uygulaması &copy; 2025 | Bitirme Projesi</p>
+    <p>Veriler <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a> tarafından sağlanmaktadır.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
